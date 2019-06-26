@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "price": { "s": minPriceField.value, "e": maxPriceField.value },
       "reviews": { "s": minCommentsField.value, "e": maxCommentsField.value },
       "ask": { "s": minAsksField.value, "e": maxAsksField.value },
-      "date": { "s": getMillTime(sPicker.selectedDates[0]), "e": getMillTime(sPicker.selectedDates[1]) },
+      "date": { "s": isNaN(getMillTime(sPicker.selectedDates[0])) ?'':getMillTime(sPicker.selectedDates[0]), "e":isNaN(getMillTime(sPicker.selectedDates[0])) ?'':getMillTime(sPicker.selectedDates[1]) },
       "best": bestField.selectedOptions[0].value,
       "achoice": achoiceField.selectedOptions[0].value,
       "image": imageField.selectedOptions[0].value,
@@ -276,11 +276,12 @@ document.addEventListener('DOMContentLoaded', function () {
       "pvideo": pvideoField.selectedOptions[0].value,
       "top": topField.value
     }
+
     // https://images-na.ssl-images-amazon.com/images
     let url =
-      'http://127.0.0.1:8888/api/v1.0/plist/filter/analysis/'
-      // 'http://47.75.100.153:5001/api/v1.0/plist/filter/analysis/'
-        + (searchField.value == '' ? 'B01C89GCHU' : searchField.value)
+      // 'http://116.7.52.135:8889/api/v1.0/plist/filter/analysis/'
+      'http://47.75.100.153:5000/api/v1.0/plist/filter/analysis/'
+      + (searchField.value == '' ? 'B01C89GCHU' : searchField.value)
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
