@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initGrid();
 
     // Reset field values.
-    searchField.value = '';
+    searchField.value = 'B01C89GCHU';
     [bestField, achoiceField, aplusField, videoField, imageField, pvideoField].forEach(function (field) {
       field.value = field.querySelectorAll('option')[0].value;
     });
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // https://images-na.ssl-images-amazon.com/images
     let url =
       // 'http://116.7.52.135:8889/api/v1.0/plist/filter/analysis/'
-      'http://47.75.100.153:5000/api/v1.0/plist/filter/analysis/'
+      'http://127.0.0.1:5000/api/v1.0/plist/filter/analysis/'
       + (searchField.value == '' ? 'B01C89GCHU' : searchField.value)
     fetch(url, {
       method: 'POST',
@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(r => r.json())
       .then(d => {
 
-        for (let i = 0; i < d.list.length; i++) {
-          const element = d.list[i];
+        for (let i = 0; i < d.top.length; i++) {
+          const element = d.top[i];
           grid.add(formatElements(element, i))
         }
 
