@@ -22,6 +22,10 @@
   width: 12.5%;
 }
 
+.highlight{
+  background-color: yellow;
+}
+
 .check {}
 
 @media (max-width: 600px) {
@@ -131,6 +135,7 @@
 }
 
 .card-id {
+  display: none;
   left: 10px;
   top: 0;
   width: 50%;

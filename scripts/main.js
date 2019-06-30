@@ -11,50 +11,80 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-
   //get element
-  let grid = null;
-  let docElem = document.documentElement;
-  let demo = document.querySelector('.grid-main');
-  let gridElement = demo.querySelector('.grid');
+  grid = null;
+  docElem = document.documentElement;
+  demo = document.querySelector('.grid-main');
+  gridElement = demo.querySelector('.grid');
 
 
   // let filterField = demo.querySelector('.filter-field');
-  let searchField = demo.querySelector('.asin-field');
+  searchField = demo.querySelector('.asin-field');
 
 
 
-  let andField = demo.querySelector('.and-field');
-  let orField = demo.querySelector('.or-field');
-  let notField = demo.querySelector('.not-field');
-  let minRateField = demo.querySelector('.min-rate-field');
-  let maxRateField = demo.querySelector('.max-rate-field');
-  let minPriceField = demo.querySelector('.min-price-field');
-  let maxPriceField = demo.querySelector('.max-price-field');
-  let minCommentsField = demo.querySelector('.min-comments-field');
-  let maxCommentsField = demo.querySelector('.max-comments-field');
-  let minAsksField = demo.querySelector('.min-asks-field');
-  let maxAsksField = demo.querySelector('.max-asks-field');
+  andField = demo.querySelector('.and-field');
+  orField = demo.querySelector('.or-field');
+  notField = demo.querySelector('.not-field');
+  minRateField = demo.querySelector('.min-rate-field');
+  maxRateField = demo.querySelector('.max-rate-field');
+  minPriceField = demo.querySelector('.min-price-field');
+  maxPriceField = demo.querySelector('.max-price-field');
+  minCommentsField = demo.querySelector('.min-comments-field');
+  maxCommentsField = demo.querySelector('.max-comments-field');
+  minAsksField = demo.querySelector('.min-asks-field');
+  maxAsksField = demo.querySelector('.max-asks-field');
 
-  let sDateField = demo.querySelector('.s-date-field');
-  let topField = demo.querySelector
-  ('.top-field');
-
-
-  let btnClear = document.getElementById('btn-clear');
-  let btnSubmit = document.getElementById('btn-submit');
-  let btnAnalyze = document.getElementById('btn-analyze');
+  sDateField = demo.querySelector('.s-date-field');
+  topField = demo.querySelector('.top-field');
 
 
-  btnAnalyze.addEventListener('click',()=>{
-    let asinList =[]
-    grid.getItems().forEach(e => {
+  btnClear = document.getElementById('btn-clear');
+  btnSubmit = document.getElementById('btn-submit');
+  btnAnalyze = document.getElementById('btn-analyze');
+
+
+  btnAnalyze.addEventListener('click', () => {
+    let asinList = []
+    let activeItems = grid.getItems().filter(function (item) {
+      return item.isActive();
+    });
+    console.log(activeItems);
+    activeItems.forEach(e => {
       asinList.push(e.getElement().querySelector('.card-asin').innerText)
     })
-    window.localStorage.setItem('asinList',asinList)
-    console.log(window.localStorage.getItem('asinList'));
-    window.open('analysis.html','_blank')
+    window.localStorage.setItem('asinList', asinList)
+    window.open('analysis.html', '_blank')
   })
+
+  btnClear.addEventListener('click', () => {
+    searchField.value = 'B01C89GCHU'
+    let fields = [andField,
+      orField,
+      notField,
+      minRateField,
+      maxRateField,
+      minPriceField,
+      maxPriceField,
+      minCommentsField,
+      maxCommentsField,
+      minAsksField,
+      maxAsksField,
+      sDateField]
+    fields.forEach(e => {
+      e.value = ''
+    });
+    console.log(window.rawItems)
+    grid = new Muuri(gridElement, {
+      items: window.rawItems
+    })
+    grid.filter(() => true)
+  })
+
+  btnSubmit.addEventListener('click', () => {
+    alert('暂时只有B01C89GCHU的数据哦')
+  })
+
 
 
   // let bestField = demo.querySelector('.best-field');
@@ -81,6 +111,18 @@ document.addEventListener('DOMContentLoaded', function () {
   //
   // Grid helper functions
   //
+
+  function delay(callback, ms) {
+    var timer = 0;
+    return function () {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }
+
 
   function initDemo() {
 
@@ -114,87 +156,93 @@ document.addEventListener('DOMContentLoaded', function () {
     // layoutFieldValue = layoutField.value;
 
     // Search field binding.
-    andField.addEventListener('keyup', function () {
+    andField.addEventListener('keyup', delay(() => {
       let newAnd = andField.value.toLowerCase();
       if (vAnd !== newAnd) {
         vAnd = newAnd;
         filter();
       }
-    });
-    orField.addEventListener('keyup', function () {
+    }, 500));
+    orField.addEventListener('keyup', delay(() => {
       let newOr = orField.value.toLowerCase();
       if (vOr !== newOr) {
         vOr = newOr;
         filter();
       }
-    });
-    notField.addEventListener('keyup', function () {
+    }, 500));
+
+    notField.addEventListener('keyup', delay(() => {
       let newNot = notField.value.toLowerCase();
       if (vNot !== newNot) {
         vNot = newNot;
         filter();
       }
-    });
-    minRateField.addEventListener('keyup', function () {
+    }, 500));
+
+    minRateField.addEventListener('keyup', delay(() => {
       let newMinRate = minRateField.value;
       if (vMinRate !== newMinRate) {
         vMinRate = newMinRate;
         filter();
       }
-    });
-    maxRateField.addEventListener('keyup', function () {
+    }, 500));
+
+    maxRateField.addEventListener('keyup', delay(() => {
       let newMaxRate = maxRateField.value;
       if (vMaxRate !== newMaxRate) {
         vMaxRate = newMaxRate;
         filter();
       }
-    });
-    minCommentsField.addEventListener('keyup', function () {
+    }, 500));
+
+    minCommentsField.addEventListener('keyup', delay(() => {
       let newMinC = minCommentsField.value;
       if (vMinComment !== newMinC) {
         vMinComment = newMinC;
         filter();
       }
-    });
+    }, 500));
 
-
-    maxCommentsField.addEventListener('keyup', function () {
+    maxCommentsField.addEventListener('keyup', delay(() => {
       let newMaxC = maxCommentsField.value;
       if (vMaxComment !== newMaxC) {
         vMaxComment = newMaxC;
         filter();
       }
-    });
-    minPriceField.addEventListener('keyup', function () {
+    }, 500));
+
+    minPriceField.addEventListener('keyup', delay(() => {
       let newMinPrice = minPriceField.value;
       if (vMinPrice !== newMinPrice) {
         vMinPrice = newMinPrice;
         filter();
       }
-    });
-    maxPriceField.addEventListener('keyup', function () {
+    }, 500));
+    maxPriceField.addEventListener('keyup', delay(() => {
       let newMaxPrice = maxPriceField.value;
       if (vMaxPrice !== newMaxPrice) {
         vMaxPrice = newMaxPrice;
         filter();
       }
-    });
-    minAsksField.addEventListener('keyup', function () {
+    }, 500));
+    minAsksField.addEventListener('keyup', delay(() => {
       let newMinAsks = minAsksField.value;
       if (vMinAsks !== newMinAsks) {
         vMinAsks = newMinAsks;
         filter();
       }
-    });
-    maxAsksField.addEventListener('keyup', function () {
+    }, 500));
+
+    maxAsksField.addEventListener('keyup', delay(() => {
       let newMaxAsks = maxAsksField.value;
       if (vMaxAsks !== newMaxAsks) {
         vMaxAsks = newMaxAsks;
         filter();
       }
-    });
+    }, 500));
 
-    //top先不管
+
+    //top display:none
     sDateField.addEventListener('change', filter);
 
     // bestField.addEventListener('change', filter);
@@ -246,34 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function initGrid() {
 
 
-    var dragCounter = 0
-
-    grid = new Muuri(gridElement, {
-      items: '*',
-      layoutDuration: 400,
-      layoutEasing: 'ease',
-      dragEnabled: true,
-      dragSortInterval: 50,
-      dragContainer: document.body,
-      dragStartPredicate: function (item, event) {
-        var isDraggable = sortFieldValue === 'order';
-        var isRemoveAction = elementMatches(event.target, '.card-remove, .card-remove i');
-        return isDraggable && !isRemoveAction ? Muuri.ItemDrag.defaultStartPredicate(item, event) : false;
-      },
-      dragReleaseDuration: 400,
-      dragReleseEasing: 'ease'
-    })
-      .on('dragStart', function () {
-        ++dragCounter;
-        docElem.classList.add('dragging');
-      })
-      .on('dragEnd', function () {
-        if (--dragCounter < 1) {
-          docElem.classList.remove('dragging');
-        }
-      })
-      .on('move', updateIndices)
-      .on('sort', updateIndices);
+    gridReset(sortFieldValue, elementMatches, updateIndices);
 
     // let data = {
     //   "asin": searchField.value,
@@ -317,9 +338,10 @@ document.addEventListener('DOMContentLoaded', function () {
               item.innerHTML = element
               items.push(item.firstChild)
             });
+            window.rawItems = items
             grid.add(items
               // .slice(0,10)
-              )
+            )
           }
         } else {
           console.log("Browser doesn't support web workers.")
@@ -330,23 +352,32 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch(error => console.error(error))
   }
 
-  function filter() {
 
+
+  function filter() {
     // filterFieldValue = filterField.value;
     let vAnd = andField.value.toLowerCase()
     let vOr = orField.value.toLowerCase()
     let vNot = notField.value.toLowerCase()
     let vMinRate = minRateField.value
+      == '' ? 0 : parseInt(minRateField.value)
     let vMaxRate = maxRateField.value
+      == '' ? 5 : parseInt(maxRateField.value)
     let vMinComment = minCommentsField.value
+      == '' ? 0 : parseInt(minCommentsField.value)
     let vMaxComment = maxCommentsField.value
+      == '' ? Number.MAX_VALUE : parseInt(maxCommentsField.value)
     let vMinPrice = minPriceField.value
+      == '' ? 0 : parseInt(minPriceField.value)
     let vMaxPrice = maxPriceField.value
+      == '' ? Number.MAX_VALUE : parseInt(maxPriceField.value)
     let vMinAsks = minAsksField.value
+      == '' ? 0 : parseInt(minAsksField.value)
     let vMaxAsks = maxAsksField.value
+      == '' ? Number.MAX_VALUE : parseInt(maxAsksField.value)
     let vSDate = getMillTime(sPicker.selectedDates[0])
     let vEDate = getMillTime(sPicker.selectedDates[1])
-    let vTop = topField.value
+    // let vTop = topField.value
 
     // let vBest = bestField.selectedOptions[0].value
     // let vAchoice = achoiceField.selectedOptions[0].value
@@ -358,12 +389,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     grid.filter(function (item) {
       let element = item.getElement()
-      let text = element.querySelector('.card-title').innerText
+
+      let titleRect = element.querySelector('.card-title')
+      let text = titleRect.innerText
       let date = getMillTime(element.querySelector('.card-date').innerText.replace('上市: ', ''))
-      let rating = element.querySelector('.card-rating').innerText.replace('评分:', '')
-      let comment = element.querySelector('.card-comment').innerText.replace('评价: ', '')
-      let ask = element.querySelector('.card-ask').innerText.replace('问答: ', '')
-      let price = element.querySelector('.card-price').innerText.replace('$', '')
+      let rating = parseInt(element.querySelector('.card-rating').innerText.replace('评分:', ''))
+      let comment = parseInt(element.querySelector('.card-comment').innerText.replace('评价: ', ''))
+      let ask = parseInt(element.querySelector('.card-ask').innerText.replace('问答: ', ''))
+      let price = parseFloat(element.querySelector('.card-price').innerText.replace('$', ''))
       // let best = element.querySelector('.card-best').checked ? 1 : 0
       // let achoice = element.querySelector('.card-achoice').checked ? 1 : 0
       // let aplus = element.querySelector('.card-aplus').checked ? 1 : 0
@@ -371,11 +404,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // let image = element.querySelector('.card-image').checked ? 1 : 0
       // let pvideo = element.querySelector('.card-pvideo').checked ? 1 : 0
 
+      let indexAnd = (text || '').toLowerCase().indexOf(vAnd)
+      let indexOr = (text || '').toLowerCase().indexOf(vOr)
+      let indexNot = (text || '').toLowerCase().indexOf(vNot)
 
-
-      let isAndMatch = !vAnd ? true : (text || '').toLowerCase().indexOf(vAnd) > -1
-      let isOrMatch = !vOr ? false : (text || '').toLowerCase().indexOf(vOr) > -1
-      let isNotMatch = !vNot ? false : (text || '').toLowerCase().indexOf(vNot) > -1
+      let isAndMatch = !vAnd ? true : indexAnd > -1
+      let isOrMatch = !vOr ? false : indexOr > -1
+      let isNotMatch = !vNot ? false : indexNot > -1
       let isDateMatch = isNaN(vSDate) && isNaN(vEDate) ? true : date > vSDate && date < vEDate
       let isRateMatch = !vMinRate && !vMaxRate ? true : rating > vMinRate && rating < vMaxRate
       let isCommentMatch = !vMinComment && !vMaxComment ? true : comment > vMinComment && comment < vMaxComment
@@ -388,20 +423,27 @@ document.addEventListener('DOMContentLoaded', function () {
       // let isImageMatch = !vImage || vImage == -1 ? true : image == vImage
       // let isPvideoMatch = !vPvideo || vPvideo == -1 ? true : pvideo == vPvideo
 
+      // console.log(
+      //   'isRateMatch', isRateMatch,
+      //   'isCommentMatch', isCommentMatch,
+      //   'isPriceMatch', isPriceMatch, price,
+      //   'isAskMatch', isAskMatch
+      // );
+
 
       return ((isAndMatch || isOrMatch) && !isNotMatch) &&
         isDateMatch &&
         isRateMatch &&
         isCommentMatch &&
         isPriceMatch &&
-        isAskMatch 
-        // &&
-        // isBestMatch &&
-        // isAchoiceMatch &&
-        // isAplusMatch &&
-        // isVdieoMatch &&
-        // isImageMatch &&
-        // isPvideoMatch
+        isAskMatch
+      // &&
+      // isBestMatch &&
+      // isAchoiceMatch &&
+      // isAplusMatch &&
+      // isVdieoMatch &&
+      // isImageMatch &&
+      // isPvideoMatch
 
       // && isFilterMatch;
     });
@@ -642,3 +684,33 @@ document.addEventListener('DOMContentLoaded', function () {
   initDemo();
 
 });
+
+function gridReset(sortFieldValue, elementMatches, updateIndices) {
+  var dragCounter = 0;
+  grid = new Muuri(gridElement, {
+    items: '*',
+    layoutDuration: 400,
+    layoutEasing: 'ease',
+    dragEnabled: true,
+    dragSortInterval: 50,
+    dragContainer: document.body,
+    dragStartPredicate: function (item, event) {
+      var isDraggable = sortFieldValue === 'order';
+      var isRemoveAction = elementMatches(event.target, '.card-remove, .card-remove i');
+      return isDraggable && !isRemoveAction ? Muuri.ItemDrag.defaultStartPredicate(item, event) : false;
+    },
+    dragReleaseDuration: 400,
+    dragReleseEasing: 'ease'
+  })
+    .on('dragStart', function () {
+      ++dragCounter;
+      docElem.classList.add('dragging');
+    })
+    .on('dragEnd', function () {
+      if (--dragCounter < 1) {
+        docElem.classList.remove('dragging');
+      }
+    })
+    .on('move', updateIndices)
+    .on('sort', updateIndices);
+}

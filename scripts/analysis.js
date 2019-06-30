@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     function analysis() {
-        let analysisurl = "http://127.0.0.1:8889/api/v1.0/plist/filter/analysis"
+        let analysisurl = 
+        // "http://127.0.0.1:5000/api/v1.0/plist/filter/analysis"
+        "http://127.0.0.1:8889/api/v1.0/plist/filter/analysis"
 
         fetch(analysisurl, {
             method: 'POST',

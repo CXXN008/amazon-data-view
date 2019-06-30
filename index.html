@@ -51,26 +51,26 @@
         <div class="control-icon">
           <i class="material-icons">↓</i>
         </div>
-        <input class="control-field min-rate-field form-control " type="text" name="search" placeholder="最小评价..." />
+        <input class="control-field min-rate-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')" placeholder="最小评价..." />
       </div>
       <div class="control range">
         <div class="control-icon">
           <i class="material-icons">↑</i>
         </div>
-        <input class="control-field max-rate-field form-control " type="text" name="search" placeholder="最大评价..." />
+        <input class="control-field max-rate-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')" placeholder="最大评价..." />
       </div>
 
       <div class="control range">
         <div class="control-icon">
           <i class="material-icons">&#xE8E3;</i>
         </div>
-        <input class="control-field min-price-field form-control " type="text" name="search" placeholder="最低价..." />
+        <input class="control-field min-price-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')" placeholder="最低价..." />
       </div>
       <div class="control range">
         <div class="control-icon">
           <i class="material-icons">&#xE8E5;</i>
         </div>
-        <input class="control-field max-price-field form-control " type="text" name="search" placeholder="最高价..." />
+        <input class="control-field max-price-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')" placeholder="最高价..." />
       </div>
 
 
@@ -78,14 +78,14 @@
         <div class="control-icon">
           <i class="material-icons">↓</i>
         </div>
-        <input class="control-field min-comments-field form-control " type="text" name="search"
+        <input class="control-field min-comments-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="最小评论数..." />
       </div>
       <div class="control range">
         <div class="control-icon">
           <i class="material-icons">↑</i>
         </div>
-        <input class="control-field max-comments-field form-control " type="text" name="search"
+        <input class="control-field max-comments-field form-control " type="text" name="search" oninput="value=value.replace(/[^\d]/g,'')"
           placeholder="最大评论数..." />
       </div>
 
@@ -94,13 +94,13 @@
         <div class="control-icon">
           <i class="material-icons">↓</i>
         </div>
-        <input class="control-field min-asks-field form-control " type="text" name="search" placeholder="最小问答数..." />
+        <input class="control-field min-asks-field form-control " oninput="value=value.replace(/[^\d]/g,'')" type="text" name="search" placeholder="最小问答数..." />
       </div>
       <div class="control range">
         <div class="control-icon">
           <i class="material-icons">↑</i>
         </div>
-        <input class="control-field max-asks-field form-control " type="text" name="search" placeholder="最大问答数..." />
+        <input class="control-field max-asks-field form-control " oninput="value=value.replace(/[^\d]/g,'')" type="text" name="search" placeholder="最大问答数..." />
       </div>
 
       <div class="control search">
@@ -215,7 +215,7 @@
       </div>
     </div>
 
-    <div class="grid"></div>
+    <div id="grid" class="grid"></div>
 
     <!-- <div class="grid-footer">
       <button class="add-more-items btn btn-primary"><i class="material-icons">&#xE145;</i>Add more items</button>
@@ -228,6 +228,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
   <script src="https://npmcdn.com/flatpickr@4.6.1/dist/l10n/zh.js"></script>
+  <script src="scripts/highlight.js"></script>
   <script src="scripts/main.js"></script>
 
 </body>
