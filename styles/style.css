@@ -176,7 +176,6 @@
 .card-bot {
   font-weight: 666;
   width: 33%;
-  line-height: 50px;
   text-align: center;
 }
 
@@ -189,10 +188,11 @@
 }
 
 .card-title {
+  min-height: 88px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 
@@ -368,7 +368,7 @@ a:hover {
 .operate-btns {
   float: right;
   margin: 10px;
-  width: 12.5%;
+  width: 45%;
 }
 
 .btn:focus, .btn:hover, .btn:active {

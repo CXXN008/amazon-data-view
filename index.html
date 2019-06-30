@@ -9,7 +9,7 @@
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="author" content="slz">
   <link rel="stylesheet" href="styles/check.css" />
-  <link rel="stylesheet" type="text/css" href="styles/star.min.css"/>
+  <link rel="stylesheet" type="text/css" href="styles/star.min.css" />
   <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -22,7 +22,8 @@
         <div class="control-icon">
           <i class="material-icons">&#xE8B6;</i>
         </div>
-        <input class="control-field asin-field form-control " type="text" name="search" value='B01C89GCHU' placeholder="asin..." />
+        <input class="control-field asin-field form-control " type="text" name="search" value='B01C89GCHU'
+          placeholder="asin..." />
       </div>
 
       <div class="control search">
@@ -120,7 +121,7 @@
         <input class="control-field top-field form-control " type="text" name="search" placeholder="top" />
       </div>
 
-
+      <!--
       <div class="control filter tripple-select">
         <div class="control-icon">
           <i class="material-icons">&#xE152;</i>
@@ -130,10 +131,9 @@
         </div>
         <select class="control-field best-field form-control">
           <option value='' disabled selected style='display:none;'>best</option>
-          <option value="-1" >不限</option>
+          <option value="-1">不限</option>
           <option value="1">是</option>
           <option value="0">否</option>
-          <!-- <option value="green">不限</option> -->
         </select>
       </div>
       <div class="control sort tripple-select">
@@ -145,10 +145,9 @@
         </div>
         <select class="control-field achoice-field form-control">
           <option value='' disabled selected style='display:none;'>achoice</option>
-          <option value="-1" >不限</option>
+          <option value="-1">不限</option>
           <option value="1">是</option>
           <option value="0">否</option>
-          <!-- <option value="green">不限</option> -->
         </select>
       </div>
       <div class="control layout  tripple-select">
@@ -160,10 +159,9 @@
         </div>
         <select class="control-field aplus-field form-control">
           <option value='' disabled selected style='display:none;'>aplus</option>
-          <option value="-1" >不限</option>
+          <option value="-1">不限</option>
           <option value="1">是</option>
           <option value="0">否</option>
-          <!-- <option value="green">不限</option> -->
         </select>
       </div>
       <div class="control filter tripple-select">
@@ -175,51 +173,45 @@
         </div>
         <select class="control-field video-field form-control">
           <option value='' disabled selected style='display:none;'>video</option>
-          <option value="-1" >不限</option>
+          <option value="-1">不限</option>
           <option value="1">是</option>
           <option value="0">否</option>
-          <!-- <option value="green">不限</option> -->
+        </select>
+      </div>
+      <div class="control filter tripple-select">
+        <div class="control-icon">
+          <i class="material-icons">&#xE152;</i>
+        </div>
+        <div class="select-arrow">
+          <i class="material-icons">&#xE313;</i>
+        </div>
+        <select class="control-field image-field form-control">
+          <option value='' disabled selected style='display:none;'>image</option>
+          <option value="-1">不限</option>
+          <option value="1">是</option>
+          <option value="0">否</option>
+        </select>
+      </div>
+      <div class="control filter tripple-select">
+        <div class="control-icon">
+          <i class="material-icons">&#xE152;</i>
+        </div>
+        <div class="select-arrow">
+          <i class="material-icons">&#xE313;</i>
+        </div>
+        <select class="control-field pvideo-field form-control">
+          <option value='' disabled selected style='display:none;'>pvideo</option>
+          <option value="-1">不限</option>
+          <option value="1">是</option>
+          <option value="0">否</option>
         </select>
       </div>
 
-
-      <div class="control filter tripple-select">
-          <div class="control-icon">
-            <i class="material-icons">&#xE152;</i>
-          </div>
-          <div class="select-arrow">
-            <i class="material-icons">&#xE313;</i>
-          </div>
-          <select class="control-field image-field form-control">
-            <option value='' disabled selected style='display:none;'>image</option>
-            <option value="-1" >不限</option>
-            <option value="1">是</option>
-            <option value="0">否</option>
-            <!-- <option value="green">不限</option> -->
-          </select>
-        </div>
-
-        
-        <div class="control filter tripple-select">
-            <div class="control-icon">
-              <i class="material-icons">&#xE152;</i>
-            </div>
-            <div class="select-arrow">
-              <i class="material-icons">&#xE313;</i>
-            </div>
-            <select class="control-field pvideo-field form-control">
-              <option value='' disabled selected style='display:none;'>pvideo</option>
-              <option value="-1" >不限</option>
-              <option value="1">是</option>
-              <option value="0">否</option>
-              <!-- <option value="green">不限</option> -->
-            </select>
-          </div>
-    
-
+-->
       <div class="operate-btns">
-        <button class="btn o-btn"><i class="material-icons">&#xE5CD;</i>清空</button>
-        <button class="btn o-btn"><i class="material-icons">&#xE5CA;</i>提交</button>
+        <button id="btn-clear" class="btn o-btn"><i class="material-icons">&#xE5CD;</i>清空</button>
+        <button id="btn-submit" class="btn o-btn"><i class="material-icons">&#xE5CA;</i>提交</button>
+        <button id="btn-analyze" class="btn o-btn"><i class="material-icons">&#xE5CD;</i>分析</button>
       </div>
     </div>
 
