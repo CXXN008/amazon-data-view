@@ -318,7 +318,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // https://images-na.ssl-images-amazon.com/images
     let url =
       // 'http://116.7.52.135:8889/api/v1.0/plist/filter/analysis/'
-      'http://127.0.0.1:5000/api/v1.0/plist/filter/'
+      // 'http://127.0.0.1:5000/api/v1.0/plist/filter/'
+      USEARCH
       + (searchField.value == '' ? 'B01C89GCHU' : searchField.value)
     fetch(url, {
       method: 'POST',

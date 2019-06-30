@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     function analysis() {
-        let analysisurl = 
-        // "http://127.0.0.1:5000/api/v1.0/plist/filter/analysis"
-        "http://127.0.0.1:8889/api/v1.0/plist/filter/analysis"
+        console.log(window.search);
+        let analysisurl =
+            // "http://127.0.0.1:5000/api/v1.0/plist/filter/analysis"
+            // "http://127.0.0.1:8889/api/v1.0/plist/filter/analysis"
+            UANALYZE
 
         fetch(analysisurl, {
             method: 'POST',
@@ -953,8 +955,8 @@ document.addEventListener('DOMContentLoaded', () => {
             div.setAttribute('id', 'category_tree' + index);
             div.style.width = '100%'
             // max_depth * 200 + 'px';
-            div.style.height = 
-            ptree_width + 'px';
+            div.style.height =
+                ptree_width + 'px';
             if (twidth < max_depth * 200) {
                 twidth = max_depth * 200;
             }
