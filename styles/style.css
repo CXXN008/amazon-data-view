@@ -428,6 +428,7 @@ select.form-control::-ms-expand {
   display: none;
 }
 
+
 .select-arrow {
   position: absolute;
   right: 10px;

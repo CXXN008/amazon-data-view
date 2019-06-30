@@ -6,13 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/analysis.css">
 </head>
 
 <body>
-    <label id='a'></label>
+    <h2 class="section-title"><span>分析图表</span></h2>
+    <div class="tables" id="painting">
+        <div>
+            <canvas id="bullets_kw_canvas" width="800px" height="800px"></canvas>
+        </div>
+
+        <div id="price"></div>
+
+        <div id="flag"></div>
+        <div id="rank_clevels"></div>
+        <div id="shipping"></div>
+        <div id="star"></div>
+        <div id="reviews"></div>
+        <div id="review_star"></div>
+        <div id="defaultreview_sh"></div>
+        <div id="defaultreview_hs"></div>
+        <div id="ask"></div>
+        <div id="variation_count"></div>
+        <div id="date"></div>
+        <div id="sweight"></div>
+        <div id="genmai_num"></div>
+
+        <div>
+            <canvas id="name_kw_canvas" width="800px" height="800px"></canvas>
+        </div>
+        <div>
+            <canvas id="feature_kw_canvas" width="800px" height="800px"></canvas>
+        </div>
+
+        <div>
+            <canvas id="variation_canvas" width="800px" height="800px"></canvas>
+        </div>
+    </div>
+
+    <div class="c-tree" id="category_tree"></div>
+
 </body>
-<script>
-    alert(window.localStorage.getItem('asinList'))
-</script>
+
+<script src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/wordcloud2.js/1.1.0/wordcloud2.js"></script>
+<script src="scripts/analysis.js"></script>
 
 </html>

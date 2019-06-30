@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
               items.push(item.firstChild)
             });
             grid.add(items
-              // .slice(0,30)
+              // .slice(0,10)
               )
           }
         } else {

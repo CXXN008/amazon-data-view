@@ -1,0 +1,59 @@
+/* title */
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0 auto;
+    color: #6e6e6e;
+}
+
+.section-title {
+    color: #3e3e3e;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 40px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section-title>span {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.section-title>span:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    right: 10px;
+    height: 2px;
+    background: #3e3e3e;
+}
+
+/* tables */
+
+.tables {
+    display: table;
+}
+
+.tables>div {
+    float: left;
+    width: 48%;
+    height: 600px;
+    padding: 1%;
+}
+
+canvas {
+    width: 100%;
+    height: 600px;
+}
+
+.c-tree {
+    width: 100%;
+}
